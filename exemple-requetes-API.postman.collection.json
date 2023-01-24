@@ -1,0 +1,77 @@
+{
+	"info": {
+		"_postman_id": "a0971419-8151-4181-bd14-006c1b51d7c4",
+		"name": "test-api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "https://localhost:8000/api/auth",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"login\": \"fontenae\",\r\n    \"password\": \"eric\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/auth",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"auth"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8000/api/etudiants",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE2NzQ1ODI3ODcsImV4cCI6MTY3NDU4NjM4Nywicm9sZXMiOlsiUk9MRV9BRE1JTiIsIlJPTEVfVVNFUiJdLCJ1c2VybmFtZSI6ImZvbnRlbmFlIn0.A-2COhffr54q3bBE4vvbQTsz7ueOaV9YRJGYq25RgTP5ieCp_BhWC1H7VAyLz4PvlWSJWfpQg0NVegJiu5HMvzW0nm711frIgISa4ps72kwmu-cBjy-T5PKE7rN9HIBAUvAwgEgs5skLMFUJiI5Y5yQHmbBvZUCAUYhKq-gEPyNS0UH_4ZFtXa0cBz2wnBRqWCOFMYvxwQ1z0pKB_LrotNDk4D5FsAT1jeygAabg37CBBwEmXwSFgXP0CfcjLN95SNXdcrH9mpUgGQqMjLl0uxwvG1BM6a7RwBNM3Os8okJkDhjYZ3m1GHekpkohGhNTc6j454JMMDUVQGTqvHExYHuT7gAbmhIlExPuSESEKsJRXdcqD4dy2m3tlnYydigUKTV28UMbnUHDItnuOtlFIEQcjQGMaw7xQO6fu2YLkJXi50FOMlkK_leuPWMeE_RUATlUCYKbShw6LAlEuX8VDqxNm_zAXAfa3XKuTTHAZ6qB3AhluTxfdGPJ3pQWeR2bsO3GTArabuzYekMoNJv3YIU_aBrTD6N4yUWUoNG-ht6cedAg7vv6bLyx6TBjT5mMZFubDcF940vC6LjY0K8naaF_Xoyq4ZqB4Aext4LDZlclblYvjPW2gS17upXZpnvyma5PJzq6mG71ajk8DADRZRyUqSy-Ge8vfd77tAA1SD4",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/api/etudiants",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"etudiants"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
