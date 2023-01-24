@@ -19,7 +19,7 @@ https://gricad-gitlab.univ-grenoble-alpes.fr/iut2-info/sa-4-a/bo-stages
 cd app-stages
 
 ##  Installer les packages supplémentaires requis (api-platform, lexik-jwt)
-composer update
+composer **install**
 
 ## Si Linux (ou Mac ?), installer le package acl (apt install acl) et donner les bons droits sur les clés SSL :
 - setfacl -R -m u:www-data:rX -m u:"$(whoami)":rwX config/jwt
