@@ -1,4 +1,4 @@
-# Installation de app-stages
+# Installation de bo-stages (BackOffice Stages)
 
 Pour installer l'application sur une machine disposant de :
 - PHP version >=7.2.5
@@ -9,16 +9,13 @@ suivre les étapes suivantes :
 ## Installer composer et symfony CLI sur votre machine
 https://symfony.com/doc/5.4/setup.html
 
-##  Créer une application "webapp" symfony version 5.4
-symfony new app-stages --version=5.4 --webapp
-
-##  Cloner le dépôt GitLab dans le répertoire app-stages
-https://gricad-gitlab.univ-grenoble-alpes.fr/iut2-info/sa-4-a/bo-stages
+##  Cloner le dépôt GitLab
+git clone https://gricad-gitlab.univ-grenoble-alpes.fr/iut2-info/sa-4-a/bo-stages.git
 
 ##  Se positionner dans le répertoire du projet
-cd app-stages
+cd bo-stages
 
-##  Installer les packages supplémentaires requis (api-platform, lexik-jwt)
+##  Installer les packages symfony
 composer **install**
 
 ## Si Linux (ou Mac ?), installer le package acl (apt install acl) et donner les bons droits sur les clés SSL :
