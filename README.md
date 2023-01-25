@@ -39,7 +39,7 @@ L'administrateur a le login **fontenae**, mot de passe : **eric**
 Les étudiants créés par défaut ont pour mot de passe leur **prenom** (sans majuscule mais avec les accents sauf sur le 1er car.)
 
 ##  Consulter la doc de l'API REST (et la tester !)
-http://localhost:8000/api/
+http://localhost:8000/api/docs/
 
 ## Tester l'API REST avec Postman
 Le fichier exemples-requetes-API...json est une collection de requêtes à charger depuis PostMan
