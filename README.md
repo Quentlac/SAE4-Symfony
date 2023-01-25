@@ -1,7 +1,7 @@
 # Installation de bo-stages (BackOffice Stages)
 
 Pour installer l'application sur une machine disposant de :
-- PHP version >=7.2.5
+- PHP version >= 8.1
 - Postgres en local sur le port 5432
 
 suivre les étapes suivantes :
