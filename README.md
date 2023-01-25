@@ -41,7 +41,7 @@ Les étudiants créés par défaut ont pour mot de passe leur **prenom** (sans m
 ##  Consulter la doc de l'API REST (et la tester !)
 http://localhost:8000/api/
 
-## Tester l'API REST avec Postman : 2 exemples proposés (authentification et GET etudiants)
+## Tester l'API REST avec Postman
 Le fichier exemples-requetes-API...json est une collection de requêtes à charger depuis PostMan
 
 ##  A la fin, arrêter le serveur
