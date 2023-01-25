@@ -2,7 +2,7 @@
 
 Pour installer l'application sur une machine disposant de :
 - PHP version >= 8.1
-- Postgres en local sur le port 5432
+- Postgres 15 en local sur le port 5432
 
 suivre les étapes suivantes :
 
