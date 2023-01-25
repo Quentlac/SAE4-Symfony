@@ -5,7 +5,7 @@
 -- Dumped from database version 15.1
 -- Dumped by pg_dump version 15.1
 
--- Started on 2023-01-23 14:13:39
+-- Started on 2023-01-25 12:19:31
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -419,6 +419,7 @@ ALTER TABLE ONLY public.messenger_messages ALTER COLUMN id SET DEFAULT nextval('
 COPY public.candidature (id, compte_etudiant_id, offre_id, etat_candidature_id, type_action, date_action) FROM stdin;
 1	2	10	6	Envoyé CV+LM par mail au responsable du stage	2023-01-20 17:34:36
 3	3	11	2	Candidature envoyée par courrier (CV+LM)	2023-01-22 10:46:09
+5	5	12	4	Envoi CV+LM, prise de contacte au tél.	2023-01-25 11:02:23
 \.
 
 
@@ -430,10 +431,11 @@ COPY public.candidature (id, compte_etudiant_id, offre_id, etat_candidature_id, 
 
 COPY public.compte_etudiant (id, etat_recherche_id, login, roles, password, parcours, derniere_connexion, etudiant_id) FROM stdin;
 1	1	fontenae	["ROLE_ADMIN"]	$2y$13$HQpMH5Kd0wsAzUQcBCOHu.kDUgunJliBA44tK/gNHAgoDQ.qAQx2i	*	\N	1
-4	1	herbienj	["ROLE_ETUDIANT"]	$2y$13$NFJWwmn4M2lghwwGpA3pnOy0F7TxRc.2TqZQHPoVaQ2yovHr5e.UW	A	\N	4
 2	4	khonnual	["ROLE_ETUDIANT"]	$2y$13$DY37MaTjWxmJ3aYeA4qB3O2DXgUlLJgR4VzBXHNsTFRTQAcu.1Q6S	A	\N	2
 3	3	enfaitme	["ROLE_ETUDIANT"]	$2y$13$a3HbRV0XGnZveyTikYO5RO5EFTC.5dkBo6WkhHttgQ5jGYaVz7vB.	B	\N	3
-5	2	borealea	["ROLE_ETUDIANT"]	$2y$13$6SZ45Z46S70cWZSztgHob.R2m6IJlelt.YehyjZhfsEhM1Lkdtuqm	B	\N	5
+4	2	herbienj	["ROLE_ETUDIANT"]	$2y$13$VcZ6aBpYos81LWZFh0.F0Ovz9D6f3G1CvF5XONddV8y8oNPiJXmne	A	\N	4
+5	3	borealea	["ROLE_ETUDIANT"]	$2y$13$WGEjYD.WdJ6MdYYupl1qF.l0AguuY3hTQyg/3zAoVpM4.mbltqeYS	B	\N	5
+11	1	haplutaj	["ROLE_ETUDIANT"]	$2y$13$YjO.PIUqu79nkh0z38sItuxiWuSNv.9WAB1s0YgK1vqk6LzplFzCO	A	\N	10
 \.
 
 
@@ -524,6 +526,7 @@ COPY public.etudiant (id, numero_ine, nom, prenom, email) FROM stdin;
 4	3456789012D	HERBIEN	Jean-Philippe	jean-philippe.herbien@iut2.fr
 5	4567890123E	BOREALE	Aurore	aurore.boreale@iut2.fr
 3	2345678901C	ENFAÏTE	Mélusine	melusine.enfaite@iut2.fr
+10	5678901234F	HAPLUTARD	Jérémy	jeremy.haplutard@iut2.fr
 \.
 
 
@@ -574,6 +577,8 @@ COPY public.offre_consultee (id, compte_etudiant_id, offre_id) FROM stdin;
 8	2	2
 9	2	8
 10	2	6
+11	3	4
+12	4	1
 \.
 
 
@@ -596,7 +601,7 @@ COPY public.offre_retenue (id, compte_etudiant_id, offre_id) FROM stdin;
 -- Name: candidature_id_seq; Type: SEQUENCE SET; Schema: public; Owner: app-stages
 --
 
-SELECT pg_catalog.setval('public.candidature_id_seq', 4, true);
+SELECT pg_catalog.setval('public.candidature_id_seq', 5, true);
 
 
 --
@@ -605,7 +610,7 @@ SELECT pg_catalog.setval('public.candidature_id_seq', 4, true);
 -- Name: compte_etudiant_id_seq; Type: SEQUENCE SET; Schema: public; Owner: app-stages
 --
 
-SELECT pg_catalog.setval('public.compte_etudiant_id_seq', 10, true);
+SELECT pg_catalog.setval('public.compte_etudiant_id_seq', 11, true);
 
 
 --
@@ -650,7 +655,7 @@ SELECT pg_catalog.setval('public.etat_recherche_id_seq', 4, true);
 -- Name: etudiant_id_seq; Type: SEQUENCE SET; Schema: public; Owner: app-stages
 --
 
-SELECT pg_catalog.setval('public.etudiant_id_seq', 9, true);
+SELECT pg_catalog.setval('public.etudiant_id_seq', 10, true);
 
 
 --
@@ -668,7 +673,7 @@ SELECT pg_catalog.setval('public.messenger_messages_id_seq', 1, false);
 -- Name: offre_consultee_id_seq; Type: SEQUENCE SET; Schema: public; Owner: app-stages
 --
 
-SELECT pg_catalog.setval('public.offre_consultee_id_seq', 10, true);
+SELECT pg_catalog.setval('public.offre_consultee_id_seq', 12, true);
 
 
 --
@@ -1024,7 +1029,7 @@ ALTER TABLE ONLY public.compte_etudiant
     ADD CONSTRAINT fk_f3ceb11eddeab1a3 FOREIGN KEY (etudiant_id) REFERENCES public.etudiant(id);
 
 
--- Completed on 2023-01-23 14:13:39
+-- Completed on 2023-01-25 12:19:31
 
 --
 -- PostgreSQL database dump complete
