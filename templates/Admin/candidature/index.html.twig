@@ -8,7 +8,6 @@
     <table class="MyDataTable table table-striped table-sm table-hover small">
         <thead class="table-dark">
             <tr>
-                <th>Id</th>
                 <th>Nom</th>
                 <th>Prénom</th>
                 <th>Parcours</th>
@@ -24,7 +23,6 @@
         <tbody>
             {% for candidature in candidatures %}
                 <tr>
-                    <td>{{ "%03d"|format(candidature.id) }}</td>
                     <td><a target="_blank" href="{{ path("app_etudiant_show",{'id':candidature.compteEtudiant.etudiant.id}) }}">{{ candidature.compteEtudiant.etudiant.nom }}</a></td>
                     <td>{{ candidature.compteEtudiant.etudiant.prenom }}</td>
                     <td>{{ candidature.compteEtudiant.parcours }}</td>

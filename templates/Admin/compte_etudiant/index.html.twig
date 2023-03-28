@@ -11,7 +11,6 @@
     <table class="MyDataTable  table table-striped table-sm table-hover small">
         <thead class="table-dark">
             <tr>
-                <th>Id</th>
                 <th>Login</th>
                 <th>Nom</th>
                 <th>Prénom</th>
@@ -26,7 +25,6 @@
             {% for compte_etudiant in compte_etudiants %}
                 {% set isAdmin =  compte_etudiant.roles[0]=='ROLE_ADMIN' %}
                 <tr class="{{isAdmin?'text-danger':''}}">
-                    <td>{{ "%03d"|format(compte_etudiant.id) }}</td>
                     <td>{{ compte_etudiant.login }}</td>
                     <td>{{ compte_etudiant.etudiant.nom }}</td>
                     <td>{{ compte_etudiant.etudiant.prenom }}</td>

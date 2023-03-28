@@ -10,7 +10,6 @@
     <table class="MyDataTable  table table-striped table-sm table-hover small">
         <thead class="table-dark">
             <tr>
-                <th>Id</th>
                 <th>Entreprise</th>
                 <th>Ville</th>
                 <th>Pays</th>
@@ -27,7 +26,6 @@
         <tbody>
             {% for offre in offres %}
                 <tr>
-                    <td>{{ "%03d"|format(offre.id) }}</td>
                     <td>{{ offre.entreprise.raisonSociale }}</td>
                     <td>{{ offre.entreprise.ville }}</td>
                     <td>{{ offre.entreprise.pays }}</td>
