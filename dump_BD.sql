@@ -24,7 +24,7 @@ SET row_security = off;
 --
 
 CREATE FUNCTION public.notify_messenger_messages() RETURNS trigger
-    LANGUAGE plpgsql
+    LANGUAGE 'plpgsql'
     AS $$
             BEGIN
                 PERFORM pg_notify('messenger_messages', NEW.queue_name::text);

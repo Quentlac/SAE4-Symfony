@@ -1,21 +1,38 @@
-version: '3'
-
+version: "3"
 services:
-###> doctrine/doctrine-bundle ###
-  database:
-    image: postgres:${POSTGRES_VERSION:-15}-alpine
+  db:
+    image: postgres
     environment:
-      POSTGRES_DB: ${POSTGRES_DB:-app}
-      # You should definitely change the password in production
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-!ChangeMe!}
-      POSTGRES_USER: ${POSTGRES_USER:-app}
+      - POSTGRES_USER=app-stages
+      - POSTGRES_PASSWORD=app-stages
+      - POSTGRES_DB=app-stages 
     volumes:
-      - db-data:/var/lib/postgresql/data:rw
-      # You may use a bind-mounted host directory instead, so that it is harder to accidentally remove the volume and lose all your data!
-      # - ./docker/db/data:/var/lib/postgresql/data:rw
-###< doctrine/doctrine-bundle ###
+      - ./dump_BD.sql:/docker-entrypoint-initdb.d/dump_BD.sql
+    
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - DATABASE_URL=postgresql://app-stages:app-stages@db/app-stages?serverVersion=15&charset=utf8
+    depends_on:
+      - db
+
+    volumes:
+      - ./:/app
+      - vendor:/app/vendor
+
+  proxy:
+    image: nginx
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+    ports:
+      - 80:80
+    depends_on:
+      - app
 
 volumes:
-###> doctrine/doctrine-bundle ###
-  db-data:
-###< doctrine/doctrine-bundle ###
+  vendor:
+    driver: local
+
+    
