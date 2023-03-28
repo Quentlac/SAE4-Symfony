@@ -9,12 +9,7 @@
                         "offre":"fa fa-briefcase",
                         "etudiant":"fa fa-user",
                         "compte_etudiant":"fa fa-key",
-                        "offre_consultee":"fa fa-eye",
-                        "offre_retenue":"fa fa-check-square-o",
-                        "candidature":"fa fa-id-card-o",
-                        "etat_offre":"fa fa-thermometer-0",
-                        "etat_recherche":"fa fa-thermometer-2",
-                        "etat_candidature":"fa fa-thermometer-4"}
+                        "candidature":"fa fa-id-card-o"}
     %}
     <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
@@ -24,6 +19,15 @@
                         <i class="fa fa-tachometer"></i> Tableau de Bord
                     </a>
                 </li>
+                <li class="nav-item nav-link ">|</li>
+                {% for entite,icone in entites %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path("app_"~entite~"_index") }}">
+                            <i class="{{icone}}"></i> {{ entite | replace ({"_":" "}) | capitalize }}
+                        </a>
+                    </li>
+                {% endfor %}
+                <li class="nav-item nav-link">|</li>
             {% elseif is_granted('ROLE_ETUDIANT') %} 
                 <li class="nav-item">
                     <a class="nav-link" href="{{ path("app_etudiant_tableau_de_bord_show") }}">
@@ -36,22 +40,7 @@
                     </a>
                 </li>  
             {% endif %}
-            {% if is_granted('ROLE_ADMIN') %}
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-bs-toggle="dropdown" aria-expanded="false">
-                        <i class="fa fa-cogs"></i> Interfaces CRUD
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="dropdown01">
-                        {% for entite,icone in entites %}
-                            <li>
-                                <a class="dropdown-item" href="{{ path("app_"~entite~"_index") }}">
-                                    <i class="{{icone}}"></i> {{ entite | replace ({"_":" "}) | capitalize }}
-                                </a>
-                            </li>
-                        {% endfor %}
-                    </ul>
-                </li>
-            {% endif %}
+
             {% if app.user!=null %}
                 <li class="nav-item">
                     <a class="nav-link" href="{{ path("app_logout") }}">
