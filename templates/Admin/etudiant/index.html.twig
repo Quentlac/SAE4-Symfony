@@ -10,7 +10,6 @@
     <table class="MyDataTable  table table-striped table-sm table-hover small">
         <thead class="table-dark">
             <tr>
-                <th>Id</th>
                 <th>NumeroINE</th>
                 <th>Nom</th>
                 <th>Prenom</th>
@@ -21,7 +20,6 @@
         <tbody>
             {% for etudiant in etudiants %}
                 <tr>
-                    <td>{{ "%03d"|format(etudiant.id) }}</td>
                     <td>{{ etudiant.numeroINE }}</td>
                     <td>{{ etudiant.nom }}</td>
                     <td>{{ etudiant.prenom }}</td>

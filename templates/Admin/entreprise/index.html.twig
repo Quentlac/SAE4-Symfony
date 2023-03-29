@@ -11,7 +11,6 @@
     <table class="MyDataTable  table table-striped table-sm table-hover small">
         <thead class="table-dark">
             <tr>
-                <th>Id</th>
                 <th>RaisonSociale</th>
                 <th>Ville</th>
                 <th>Pays</th>
@@ -21,7 +20,6 @@
         <tbody>
         {% for entreprise in entreprises %}
             <tr>
-                <td>{{ "%03d"|format(entreprise.id) }}</td>
                 <td>{{ entreprise.raisonSociale }}</td>
                 <td>{{ entreprise.ville }}</td>
                 <td>{{ entreprise.pays }}</td>

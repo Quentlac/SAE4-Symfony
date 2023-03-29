@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Etudiant index{% endblock %}
+{% block sort %}[5,'asc'],[4,'asc'],[2,'asc']{% endblock %}
+
+{% block body %}
+    <h1>Etudiants
+        <a class="btn btn-primary btn-sm" href="{{ path('app_compte_etudiant_new') }}"><i class="fa fa-plus"></i> ajouter</a>
+    </h1>
+
+    <table class="MyDataTable  table table-striped table-sm table-hover small">
+        <thead class="table-dark">
+        <tr>
+            <th>Numero INE</th>
+            <th>Nom</th>
+            <th>Prenom</th>
+            <th>Email</th>
+            <th>Login</th>
+            <th>Parcours</th>
+            <th>Derniere Connexion</th>
+            <th>Etat Recherche</th>
+            <th>actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for compte in compte_etudiants %}
+            {% set isAdmin =  compte.roles[0]=='ROLE_ADMIN' %}
+            <tr class="{{isAdmin?'text-danger':''}}">
+                <td>{{ compte.etudiant.numeroINE }}</td>
+                <td>{{ compte.etudiant.nom }}</td>
+                <td>{{ compte.etudiant.prenom }}</td>
+                <td>{{ compte.etudiant.email }}</td>
+                <td>{{ compte.login }}</td>
+                <td>{{ not isAdmin ? compte.parcours : 'PROF'}}</td>
+                <td>{{ compte.derniereConnexion ? compte_etudiant.derniereConnexion|date('d/m/Y i:H') : '' }}</td>
+                <td>{{ not isAdmin ? compte.etatRecherche.etat : ''}}</td>
+                <td>
+                    <a href="{{ path('app_compte_etudiant_show', {'id': compte.id}) }}">voir</a>
+                    <a href="{{ path('app_compte_etudiant_edit', {'id': compte.id}) }}">éditer</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">Aucun Etudiant Inscrit</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
