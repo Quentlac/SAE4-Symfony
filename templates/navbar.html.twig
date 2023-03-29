@@ -22,7 +22,7 @@
                 {% for entite,icone in entites %}
                     <li class="nav-item">
                         <a class="nav-link" href="{{ path("app_"~entite~"_index") }}">
-                            <i class="{{icone}}"></i> {{ entite | replace ({"_":" "}) | capitalize }}
+                            <i class="{{icone}}"></i> {{ entite | replace ({"_":"s "}) | capitalize }}s
                         </a>
                     </li>
                 {% endfor %}
