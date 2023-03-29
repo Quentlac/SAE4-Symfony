@@ -8,6 +8,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+use Symfony\Component\Validator\Constraints\Regex;
 
 class CompteEtudiantType extends AbstractType {
 
@@ -16,7 +17,21 @@ class CompteEtudiantType extends AbstractType {
                 ->add('etudiant', EtudiantType::class, [
                     'label' => false,
                 ])
-                ->add('login')
+                ->add('login', null,
+                        [
+                            'label' => 'Login',
+                            'attr' => [
+                                'placeholder' => 'Exemple : dupontje',
+                            ],
+                            'constraints' => [
+                                new Regex([
+                                    // le login doit contenir 8 lettres minuscules
+                                    'pattern' => '/^[a-z]{8}$/',
+                                    'message' => 'Le login doit être composé de 8 lettres minuscules.',
+                                ]),
+                            ],
+                        ]
+                )
                 ->add('role', ChoiceType::class, ["mapped" => false, "choices" => ["Etudiant·e" => "ROLE_ETUDIANT", "Administrateur" => "ROLE_ADMIN"]])
                 ->add('password', PasswordType::class, ["required" => false, "empty_data" => 'no change'])
                 ->add('parcours', ChoiceType::class, ["choices" => ["Indéfini" => "*", "Parcours A" => "A", "Parcours B" => "B"]])
