@@ -86,7 +86,7 @@ class CompteEtudiantController extends AbstractController {
             return $this->redirectToRoute('app_compte_etudiant_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('Admin/compte_etudiant/edit.html.twig', [
+        return $this->renderForm('Admin/fusionEtudiantCompte/edit.html.twig', [
                     'compte_etudiant' => $compteEtudiant,
                     'form' => $form,
         ]);
