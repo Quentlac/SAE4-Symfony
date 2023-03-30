@@ -42,7 +42,7 @@ class CompteEtudiant implements UserInterface, PasswordAuthenticatedUserInterfac
     #[ORM\JoinColumn(nullable: false)]
     private ?EtatRecherche $etatRecherche = null;
 
-    #[ORM\OneToOne(targetEntity: Etudiant::class)]
+    #[ORM\OneToOne(targetEntity: Etudiant::class, cascade: ['persist'])]
     #[ORM\JoinColumn(nullable: false)]
     private ?Etudiant $etudiant = null;
 
