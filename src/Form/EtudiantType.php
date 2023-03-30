@@ -21,8 +21,9 @@ class EtudiantType extends AbstractType
                 ],
                 'constraints' => [
                     new Regex([
-                        'pattern' => '/^[0-9]{10}[A-Z]$/',
-                        'message' => 'Le numéro INE doit être composé de 10 chiffres et une lettre majuscule.',
+                        // le numéro INE doit faire une longueur de 11 caractères
+                        'pattern' => '/^[A-Za-z0-9]{11}$/',
+                        'message' => 'Le numéro INE doit être composé de chiffres et lettres et doit faire une longueur de 11.',
                     ]),
                 ],
             ])
@@ -34,7 +35,7 @@ class EtudiantType extends AbstractType
                     new Regex([
                         // le nom doit etre composé de lettres majuscules (avec un tiret en cas de nom composé)
                         'pattern' => '/^[a-zA-ZÀ-ÿ]+$/',
-                        'message' => 'Le nom doit être composé uniquement de lettre',
+                        'message' => 'Le nom doit être composé uniquement de lettres.',
                     ])
                 ],
             ])
@@ -47,7 +48,7 @@ class EtudiantType extends AbstractType
                         // Le prénom doit commencer par une majuscule et être composé uniquement de lettres
                         // ou, pour les prénoms composés, d'une majuscule suivi de lettres minuscules puis d'un tiret et d'une majuscule suivi de lettres minuscules
                         'pattern' => '/^[a-zA-ZÀ-ÿ]+$/',
-                        'message' => 'Le prénom doit commencer par une majuscule et être composé uniquement de lettres.',
+                        'message' => 'Le prénom doit être composé uniquement de lettres.',
                     ])
                 ],
             ])

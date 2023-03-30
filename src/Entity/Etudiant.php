@@ -41,7 +41,7 @@ class Etudiant {
     }
 
     public function setNumeroINE(string $numeroINE): self {
-        $this->numeroINE = $numeroINE;
+        $this->numeroINE = strtoupper($numeroINE);
 
         return $this;
     }
