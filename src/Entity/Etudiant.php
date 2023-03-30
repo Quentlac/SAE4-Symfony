@@ -51,7 +51,7 @@ class Etudiant {
     }
 
     public function setNom(string $nom): self {
-        $this->nom = $nom;
+        $this->nom = strtoupper($nom);
 
         return $this;
     }
@@ -61,7 +61,7 @@ class Etudiant {
     }
 
     public function setPrenom(string $prenom): self {
-        $this->prenom = $prenom;
+        $this->prenom = strtoupper($prenom[0]) . strtolower(substr($prenom, 1));
 
         return $this;
     }

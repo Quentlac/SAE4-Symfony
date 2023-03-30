@@ -37,7 +37,11 @@
             </tr>
             <tr>
                 <th>Roles</th>
-                <td>{{ compte_etudiant.roles ? compte_etudiant.roles|json_encode : '' }}</td>
+                <td>
+                    {% for role in compte_etudiant.roles %}
+                        <span class="tag">{{ (role | split('_'))[1] }}</span>
+                    {% endfor %}
+                </td>
             </tr>
             <tr>
                 <th>Derniere Connexion</th>
