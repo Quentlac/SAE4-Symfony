@@ -21,12 +21,15 @@ class OffreType extends AbstractType {
                 ->add('entreprise')
                 ->add('intitule')
                 ->add('descriptif')
-                // la date de dépot doit etre inferieure ou egale a la date du jour
                 ->add('dateDepot', DateType::class, [
                     'widget' => 'single_text',
                     'constraints' => [
-                        new LessThanOrEqual(['value' => new \DateTime(), 'message' => 'La date de dépot doit être inférieure ou égale à la date du jour.'])
-                    ]
+                        new LessThanOrEqual(
+                            [
+                                'value' => new \DateTime(), 'message' => '',
+                            ])
+                    ],
+                    'help' => 'La date de dépot doit être inférieure ou égale à la date du jour.'
                 ])
                 ->add('parcours', ChoiceType::class, ["choices" => ["Indéfini" => "*", "Parcours A" => "A", "Parcours B" => "B"]])
                 ->add('motsCles', null, [

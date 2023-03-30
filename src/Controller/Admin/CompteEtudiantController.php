@@ -6,6 +6,8 @@ use App\Entity\CompteEtudiant;
 use App\Entity\Etudiant;
 use App\Form\CompteEtudiantType;
 use App\Repository\CompteEtudiantRepository;
+use App\Repository\EtatRechercheRepository;
+use ContainerCxi6Pyl\getEtatRechercheRepositoryService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\FormBuilder;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -34,12 +36,13 @@ class CompteEtudiantController extends AbstractController {
 
     #[Route('/new', name: 'app_compte_etudiant_new', methods: ['GET', 'POST'])]
     public function new(Request $request, CompteEtudiantRepository $compteEtudiantRepository,
-            UserPasswordHasherInterface $passwordHasher): Response {
+            UserPasswordHasherInterface $passwordHasher, EtatRechercheRepository $etatRechercheRepository): Response {
         $compteEtudiant = new CompteEtudiant();
         $form = $this->createForm(CompteEtudiantType::class, $compteEtudiant);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $hashedPassword = $passwordHasher->hashPassword($compteEtudiant, $compteEtudiant->getPassword());
+            $compteEtudiant->setEtatRecherche($etatRechercheRepository->find(1));
             $compteEtudiant->setPassword($hashedPassword);
             $compteEtudiant->setRoles([$form['role']->getData()]);
             $compteEtudiantRepository->save($compteEtudiant, true);
