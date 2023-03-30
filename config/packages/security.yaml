@@ -55,7 +55,9 @@ security:
         - { path: ^/api/docs, roles: PUBLIC_ACCESS } # Allows accessing API documentations and Swagger UI docs
         - { path: ^/api/auth, roles: PUBLIC_ACCESS }
         # Il faut être ADMIN pour POST ou DELETE les entites ci-dessous via l'API REST
-        - { path: ^/api/(compte_etudiants|entreprises|etat_candidatures|etat_offres|etat_recherches|etudiants|offres), roles: ROLE_ADMIN, methods: [POST, DELETE, PUT, PATCH] }
+        - { path: ^/api/(entreprises|etat_candidatures|etat_offres|etat_recherches|etudiants|offres), roles: ROLE_ADMIN, methods: [POST, DELETE, PUT, PATCH] }
+        - { path: ^/api/compte_etudiants, roles: ROLE_ADMIN, methods: [POST, DELETE] }
+        - { path: ^/api/compte_etudiants, roles: ROLE_ETUDIANT, methods: [PUT, PATCH] }
         # Il faut être ADMIN pour PUT ou PATCH les entites ci-dessous via l'API REST
         - { path: ^/api/(entreprises|etat_candidatures|etat_offres|etat_recherches|offres), roles: ROLE_ADMIN, methods: [PUT, PATCH] }
         # Il faut être authentifié pour toutes les autres opérations de l'API REST'
