@@ -33,8 +33,8 @@ class EtudiantType extends AbstractType
                 'constraints' => [
                     new Regex([
                         // le nom doit etre composé de lettres majuscules (avec un tiret en cas de nom composé)
-                        'pattern' => '/^[A-Z]+(-[A-Z]+)?$/',
-                        'message' => 'Le nom doit être composé de lettres majuscules.',
+                        'pattern' => '/^[a-zA-ZÀ-ÿ]+$/',
+                        'message' => 'Le nom doit être composé uniquement de lettre',
                     ])
                 ],
             ])
@@ -46,7 +46,7 @@ class EtudiantType extends AbstractType
                     new Regex([
                         // Le prénom doit commencer par une majuscule et être composé uniquement de lettres
                         // ou, pour les prénoms composés, d'une majuscule suivi de lettres minuscules puis d'un tiret et d'une majuscule suivi de lettres minuscules
-                        'pattern' => '/^[A-Z][a-z]+(-[A-Z][a-z]+)?$/',
+                        'pattern' => '/^[a-zA-ZÀ-ÿ]+$/',
                         'message' => 'Le prénom doit commencer par une majuscule et être composé uniquement de lettres.',
                     ])
                 ],
