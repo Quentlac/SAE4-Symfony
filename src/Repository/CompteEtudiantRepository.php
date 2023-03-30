@@ -5,6 +5,8 @@ namespace App\Repository;
 use App\Entity\CompteEtudiant;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Exception;
+use PDOException;
 use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\PasswordUpgraderInterface;
@@ -24,10 +26,12 @@ class CompteEtudiantRepository extends ServiceEntityRepository implements Passwo
         parent::__construct($registry, CompteEtudiant::class);
     }
 
+    /**
+     * @throws Exception
+     */
     public function save(CompteEtudiant $entity, bool $flush = false): void
     {
         $this->getEntityManager()->persist($entity);
-
         if ($flush) {
             $this->getEntityManager()->flush();
         }
@@ -55,11 +59,12 @@ class CompteEtudiantRepository extends ServiceEntityRepository implements Passwo
 
         $this->save($user, true);
     }
-    
+
     /**
      * @return CompteEtudiant[] Returns an array of Etudiant objects
      */
-    public function findAll(): array {
+    public function findAll(): array
+    {
         return $this->getEntityManager()->createQuery(
             'SELECT c
             FROM App\Entity\Etudiant e, App\Entity\CompteEtudiant c
@@ -67,7 +72,7 @@ class CompteEtudiantRepository extends ServiceEntityRepository implements Passwo
             ORDER BY e.nom, e.prenom ASC'
         )->getResult();
     }
-    
+
 //    /**
 //     * @return CompteEtudiant[] Returns an array of CompteEtudiant objects
 //     */

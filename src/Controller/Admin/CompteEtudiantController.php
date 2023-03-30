@@ -15,6 +15,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
+use Symfony\Component\Form\FormError;
 
 #[Route('/admin/compte_etudiant')]
 class CompteEtudiantController extends AbstractController {
@@ -45,7 +46,15 @@ class CompteEtudiantController extends AbstractController {
             $compteEtudiant->setEtatRecherche($etatRechercheRepository->find(1));
             $compteEtudiant->setPassword($hashedPassword);
             $compteEtudiant->setRoles([$form['role']->getData()]);
-            $compteEtudiantRepository->save($compteEtudiant, true);
+            try {
+                $compteEtudiantRepository->save($compteEtudiant, true);
+            } catch (\UniqueConstraintViolationException|\Exception|\PDOException $Exception) {
+                $form->addError(new FormError('Ce numéro INE est déjà utilisé'));
+                return $this->renderForm('Admin/fusionEtudiantCompte/new.html.twig', [
+                    'compte_etudiant' => $compteEtudiant,
+                    'form' => $form,
+                ]);
+            }
             return $this->redirectToRoute('app_compte_etudiant_index', [], Response::HTTP_SEE_OTHER);
         }
 
