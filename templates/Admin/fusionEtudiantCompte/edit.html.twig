@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit CompteEtudiant{% endblock %}
+{% block title %}Modification utilisateur{% endblock %}
 
 {% block body %}
-    <h1>Editer CompteEtudiant</h1>
+    <h1>Modifier le compte de {{ compte_etudiant.etudiant.prenom }} {{ compte_etudiant.etudiant.nom }}</h1>
 
     {{ include('Admin/fusionEtudiantCompte/_form.html.twig', {'button_label': 'Enregistrer'}) }}
 

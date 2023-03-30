@@ -1,10 +1,10 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Etudiants{% endblock %}
+{% block title %}Utilisateurs{% endblock %}
 {% block sort %}[5,'asc'],[4,'asc'],[2,'asc']{% endblock %}
 
 {% block body %}
-    <h1>Etudiants
+    <h1>Utilisateurs
         <a class="btn btn-primary btn-sm" href="{{ path('app_compte_etudiant_new') }}"><i class="fa fa-plus"></i> ajouter</a>
     </h1>
 
@@ -17,8 +17,8 @@
             <th>Email</th>
             <th>Login</th>
             <th>Parcours</th>
-            <th>Derniere Connexion</th>
-            <th>Etat Recherche</th>
+            <th>Derniere connexion</th>
+            <th>Etat de la recherche</th>
             <th>actions</th>
         </tr>
         </thead>
