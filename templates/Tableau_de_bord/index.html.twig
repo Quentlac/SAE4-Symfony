@@ -14,6 +14,9 @@
                 <i class="fa fa-tachometer"></i>
                 {{ isAdmin ? "Recherches de Stage" : comptes[0].etudiant.nom ~ " " ~ comptes[0].etudiant.prenom }}
             </h4>
+            <p>
+                {{ isAdmin ? "Retrouvez ici l'avancement en temps réel de vos étudiants dans leur recherche de stage." : "" }}
+            </p>
         </div>
         <div class="card-body">
             <table class="MyDataTable table table-striped table-sm small text-left">
@@ -25,10 +28,24 @@
                         <th>Email</th>
                         <th>Login</th>
                         <th class="text-center">Parcours</th>
-                        <th class="text-center">Recherche</th>
-                        <th class="text-center">Consultées</th>
-                        <th class="text-center">Retenues</th>
-                        <th class="text-center">Candidatures</th>
+                        <th class="text-center"
+                            data-bs-toggle="tooltip" data-bs-title="État de la recherche de l'étudiant">
+                            Recherche
+                        </th>
+                        <th class="text-center"
+                            data-bs-toggle="tooltip" data-bs-title="Nombre d'offres que l'étudiant a consultées">
+                            Consultées
+                        </th>
+
+                        <th class="text-center"
+                            data-bs-toggle="tooltip" data-bs-title="Nombre d'offres que l'étudiant a mis en favoris">
+                            Retenues
+                        </th>
+
+                        <th class="text-center"
+                            data-bs-toggle="tooltip" data-bs-title="Nombre d'offres auxquelles l'étudiant a candidaté">
+                            Candidatures
+                        </th>
                     </tr>
                 </thead>
                 <tbody>
