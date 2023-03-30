@@ -72,7 +72,7 @@ class CompteEtudiant implements UserInterface, PasswordAuthenticatedUserInterfac
     }
 
     public function setLogin(string $login): self {
-        $this->login = $login;
+        $this->login = strtolower($login);
 
         return $this;
     }

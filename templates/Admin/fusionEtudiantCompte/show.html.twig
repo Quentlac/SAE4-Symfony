@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}CompteEtudiant{% endblock %}
+{% block title %}Compte{% endblock %}
 
 {% block body %}
-    <h1>CompteEtudiant</h1>
+    <h1>Compte de {{ compte_etudiant.etudiant.prenom }} {{ compte_etudiant.etudiant.nom | lower | capitalize }}</h1>
 
     <table class="table">
         <tbody>
@@ -20,11 +20,11 @@
                 <td>{{ compte_etudiant.etudiant.nom }}</td>
             </tr>
             <tr>
-                <th>Login</th>
+                <th>Prénom</th>
                 <td>{{ compte_etudiant.etudiant.prenom }}</td>
             </tr>
             <tr>
-                <th>Login</th>
+                <th>Email</th>
                 <td>{{ compte_etudiant.etudiant.email }}</td>
             </tr>
             <tr>
@@ -37,7 +37,11 @@
             </tr>
             <tr>
                 <th>Roles</th>
-                <td>{{ compte_etudiant.roles ? compte_etudiant.roles|json_encode : '' }}</td>
+                <td>
+                    {% for role in compte_etudiant.roles %}
+                        <span class="tag">{{ (role | split('_'))[1] }}</span>
+                    {% endfor %}
+                </td>
             </tr>
             <tr>
                 <th>Derniere Connexion</th>

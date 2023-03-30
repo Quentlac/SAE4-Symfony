@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Candidature index{% endblock %}
+{% block title %}Candidatures{% endblock %}
 
 {% block body %}
     <h1>Candidatures {# <a class="btn btn-primary btn-sm" href="{{ path('app_candidature_new') }}"><i class="fa fa-plus"></i> ajouter</a> #} </h1>
@@ -23,7 +23,7 @@
         <tbody>
             {% for candidature in candidatures %}
                 <tr>
-                    <td><a target="_blank" href="{{ path("app_etudiant_show",{'id':candidature.compteEtudiant.etudiant.id}) }}">{{ candidature.compteEtudiant.etudiant.nom }}</a></td>
+                    <td><a target="_blank" href="{{ path("app_compte_etudiant_show",{'id':candidature.compteEtudiant.id}) }}">{{ candidature.compteEtudiant.etudiant.nom }}</a></td>
                     <td>{{ candidature.compteEtudiant.etudiant.prenom }}</td>
                     <td>{{ candidature.compteEtudiant.parcours }}</td>
                     <td><a target="_blank" href="{{ path("app_entreprise_show",{'id':candidature.offre.entreprise.id}) }}">{{ candidature.offre.entreprise.raisonSociale }}</a></td>

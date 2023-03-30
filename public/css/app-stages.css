@@ -94,3 +94,13 @@ a.page-link {
     color: #000000;
     cursor: pointer;
 }
+
+.tag {
+    margin: 10px 0;
+    margin-right: 5px;
+    background-color: #5C636A;
+    color: white;
+    padding: 4px 10px;
+    border-radius: 10px;
+    font-weight: bold;
+}
