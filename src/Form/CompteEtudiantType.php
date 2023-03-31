@@ -25,9 +25,9 @@ class CompteEtudiantType extends AbstractType {
                             ],
                             'constraints' => [
                                 new Regex([
-                                    // le login doit contenir 8 lettres minuscules
-                                    'pattern' => '/^[a-zA-Z]{8}[0-9]?$/',
-                                    'message' => 'Le login doit être composé de 8 lettres avec un chiffre si nécessaire.',
+                                    // le login doit contenir 16 lettres minuscules
+                                    'pattern' => '/^[A-Za-z0-9]{1,16}$/',
+                                    'message' => 'Le login doit être composé de lettres et de chiffres avec une longueur total de 8.',
                                 ]),
                             ],
                         ]
