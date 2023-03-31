@@ -41,14 +41,14 @@
                     <a
                             href="{{ path('app_compte_etudiant_show', {'id': compte.id}) }}"
                             target="_blank" class="btn btn-sm btn-primary"
-                            data-bs-toggle="tooltip" data-bs-title="Cliquez pour voir les caractéristiques de l'offre"
+                            data-bs-toggle="tooltip" data-bs-title="Cliquez pour voir les caractéristiques de l'utilisateur"
                     >
                         <i class="fa fa-regular fa-eye"></i>
                     </a>
                     <a
                             href="{{ path('app_compte_etudiant_edit', {'id': compte.id}) }}"
                             target="_blank" class="btn btn-sm btn-primary"
-                            data-bs-toggle="tooltip" data-bs-title="Cliquez pour modifier l'offre"
+                            data-bs-toggle="tooltip" data-bs-title="Cliquez pour modifier l'utilisateur"
                     >
                         <i class="fa fa-duotone fa-pencil"></i>
                     </a>
@@ -61,4 +61,41 @@
         {% endfor %}
         </tbody>
     </table>
+
+    <script>
+        const titres = document.querySelectorAll("th");
+        titres.forEach((titre) => {
+                let title = titre.innerText;
+                // si le title se termine par un s, on le supprime
+                if (title.slice(-1) === "s") {
+                    title = title.slice(0, -1);
+                }
+                // si le title est composé de plusieurs mots, on met des s à tous les mots après avoir supprimé le s du premier mots (s'il y en a un)
+                if (title.indexOf(" ") !== -1) {
+                    title = title.split(" ").map((mot, index) => {
+                        if (index === 0) {
+                            if (mot.slice(-1) === "s") {
+                                mot = mot.slice(0, -1);
+                            }
+                            mot = mot + "s";
+                        } else {
+                            mot = mot + "s";
+                        }
+                        return mot;
+                    }).join(" ");
+                } else {
+                    title = title + "s";
+                }
+
+                title = title.toLowerCase();
+
+                if (titre.innerText === "Etat de la recherche") {
+                    title = "états de recherche";
+                } else if (titre.innerText === "Numero INE") {
+                    title = "numéros INE";
+                }
+                titre.title = "cliquez ici pour trier les informations par " + title;
+            }
+        );
+    </script>
 {% endblock %}

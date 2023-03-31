@@ -42,4 +42,36 @@
             {% endfor %}
         </tbody>
     </table>
+
+    <script>
+        const titres = document.querySelectorAll("th");
+        titres.forEach((titre) => {
+                let title = titre.innerText;
+                // si le title se termine par un s, on le supprime
+                if (title.slice(-1) === "s") {
+                    title = title.slice(0, -1);
+                }
+                // si le title est composé de plusieurs mots, on met des s à tous les mots après avoir supprimé le s du premier mots (s'il y en a un)
+                if (title.indexOf(" ") !== -1) {
+                    title = title.split(" ").map((mot, index) => {
+                        if (index === 0) {
+                            if (mot.slice(-1) === "s") {
+                                mot = mot.slice(0, -1);
+                            }
+                            mot = mot + "s";
+                        } else {
+                            mot = mot + "s";
+                        }
+                        return mot;
+                    }).join(" ");
+                } else {
+                    title = title + "s";
+                }
+
+                title = title.toLowerCase();
+
+                titre.title = "cliquez ici pour trier les informations par " + title;
+            }
+        );
+    </script>
 {% endblock %}

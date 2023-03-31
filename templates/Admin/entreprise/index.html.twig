@@ -31,14 +31,14 @@
                     <a
                             href="{{ path('app_entreprise_show', {'id': entreprise.id}) }}"
                             target="_blank" class="btn btn-sm btn-primary"
-                            data-bs-toggle="tooltip" data-bs-title="Cliquez pour voir les caractéristiques de l'offre"
+                            data-bs-toggle="tooltip" data-bs-title="Cliquez pour voir les caractéristiques de l'entreprise"
                     >
                         <i class="fa fa-regular fa-eye"></i>
                     </a>
                     <a
                             href="{{ path('app_entreprise_edit', {'id': entreprise.id}) }}"
                             target="_blank" class="btn btn-sm btn-primary"
-                            data-bs-toggle="tooltip" data-bs-title="Cliquez pour modifier l'offre"
+                            data-bs-toggle="tooltip" data-bs-title="Cliquez pour modifier l'entreprise"
                     >
                         <i class="fa fa-duotone fa-pencil"></i>
                     </a>
@@ -51,4 +51,24 @@
         {% endfor %}
         </tbody>
     </table>
+
+    <script>
+        const titres = document.querySelectorAll("th");
+        titres.forEach((titre) => {
+                let title = titre.innerText;
+                // si le title se termine par un s, on le supprime
+                if (title.slice(-1) === "s") {
+                    title = title.slice(0, -1);
+                }
+                // si le title est composé de plusieurs mots, on met des s à tous les mots
+                if (title.indexOf(" ") !== -1) {
+                    title = title.split(" ").map((mot) => mot + "s").join(" ");
+                } else {
+                    title += "s";
+                }
+                titre.title = "cliquez ici pour trier les informations par " + title.toLowerCase();
+            }
+        );
+    </script>
+
 {% endblock %}
