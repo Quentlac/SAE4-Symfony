@@ -4,6 +4,9 @@
 
 {% block body %}
     <h1>Candidatures {# <a class="btn btn-primary btn-sm" href="{{ path('app_candidature_new') }}"><i class="fa fa-plus"></i> ajouter</a> #} </h1>
+    <p>
+        Ici, vous pouvez consulter les candidatures des étudiants aux offres de stage.
+    </p>
 
     <table class="MyDataTable table table-striped table-sm table-hover small">
         <thead class="table-dark">
@@ -14,10 +17,9 @@
                 <th>Entreprise</th>
                 <th>Offre</th>
                 <th>Parcours</th>
-                <th>TypeAction</th>
-                <th>DateAction</th>
+                <th>Type action</th>
+                <th>Date action</th>
                 <th>Etat</th>
-                <th>actions</th>
             </tr>
         </thead>
         <tbody>
@@ -32,10 +34,6 @@
                     <td>{{ candidature.typeAction }}</td>
                     <td>{{ candidature.dateAction ? candidature.dateAction|date('d/m/Y H:i') : '' }}</td>
                     <td>{% if candidature.etatCandidature %}{{ candidature.etatCandidature.etat }}{% endif %}</td>
-                    <td>
-                        <a href="{{ path('app_candidature_show', {'id': candidature.id}) }}">voir</a>
-                        <a href="{{ path('app_candidature_edit', {'id': candidature.id}) }}">éditer</a>
-                    </td>
                 </tr>
             {% else %}
                 <tr>
