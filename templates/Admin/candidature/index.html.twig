@@ -44,6 +44,9 @@
     </table>
 
     <script>
+
+        //////////////////// titles pour le tri ////////////////////
+
         const titres = document.querySelectorAll("th");
         titres.forEach((titre) => {
                 let title = titre.innerText;
@@ -73,5 +76,24 @@
                 titre.title = "cliquez ici pour trier les informations par " + title;
             }
         );
+
+        //////////////////// title de pour les utilisateurs ////////////////////
+
+        const utilisateurs = document.querySelectorAll("td:nth-child(1)");
+        utilisateurs.forEach((utilisateur) => {
+            utilisateur.title = "cliquez ici pour consulter les informations de l'utilisateur";
+        });
+
+        //////////////////// title de pour les entreprises ////////////////////
+        const entreprises = document.querySelectorAll("td:nth-child(4)");
+        entreprises.forEach((entreprise) => {
+            entreprise.title = "cliquez ici pour consulter les informations de l'entreprise";
+        });
+
+        //////////////////// title de pour les offres ////////////////////
+        const offres = document.querySelectorAll("td:nth-child(5)");
+        offres.forEach((offre) => {
+            offre.title = "cliquez ici pour consulter les informations de l'offre";
+        });
     </script>
 {% endblock %}
