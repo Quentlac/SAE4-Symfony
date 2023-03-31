@@ -38,8 +38,20 @@
                 <td>{{ compte.derniereConnexion ? compte_etudiant.derniereConnexion|date('d/m/Y i:H') : '' }}</td>
                 <td>{{ not isAdmin ? compte.etatRecherche.etat : ''}}</td>
                 <td>
-                    <a href="{{ path('app_compte_etudiant_show', {'id': compte.id}) }}">voir</a>
-                    <a href="{{ path('app_compte_etudiant_edit', {'id': compte.id}) }}">éditer</a>
+                    <a
+                            href="{{ path('app_compte_etudiant_show', {'id': compte.id}) }}"
+                            target="_blank" class="btn btn-sm btn-primary"
+                            data-bs-toggle="tooltip" data-bs-title="Cliquez pour voir les caractéristiques de l'offre"
+                    >
+                        <i class="fa fa-regular fa-eye"></i>
+                    </a>
+                    <a
+                            href="{{ path('app_compte_etudiant_edit', {'id': compte.id}) }}"
+                            target="_blank" class="btn btn-sm btn-primary"
+                            data-bs-toggle="tooltip" data-bs-title="Cliquez pour modifier l'offre"
+                    >
+                        <i class="fa fa-duotone fa-pencil"></i>
+                    </a>
                 </td>
             </tr>
         {% else %}

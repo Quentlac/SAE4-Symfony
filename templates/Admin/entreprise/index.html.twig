@@ -28,8 +28,20 @@
                 <td>{{ entreprise.ville }}</td>
                 <td>{{ entreprise.pays }}</td>
                 <td>
-                    <a href="{{ path('app_entreprise_show', {'id': entreprise.id}) }}">voir</a>
-                    <a href="{{ path('app_entreprise_edit', {'id': entreprise.id}) }}">éditer</a>
+                    <a
+                            href="{{ path('app_entreprise_show', {'id': entreprise.id}) }}"
+                            target="_blank" class="btn btn-sm btn-primary"
+                            data-bs-toggle="tooltip" data-bs-title="Cliquez pour voir les caractéristiques de l'offre"
+                    >
+                        <i class="fa fa-regular fa-eye"></i>
+                    </a>
+                    <a
+                            href="{{ path('app_entreprise_edit', {'id': entreprise.id}) }}"
+                            target="_blank" class="btn btn-sm btn-primary"
+                            data-bs-toggle="tooltip" data-bs-title="Cliquez pour modifier l'offre"
+                    >
+                        <i class="fa fa-duotone fa-pencil"></i>
+                    </a>
                 </td>
             </tr>
         {% else %}
